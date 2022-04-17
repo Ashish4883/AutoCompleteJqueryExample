@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "SearchCity";
+}
+<p class=" = "jumbotron">SearchCity</p>
+<hr/>
+<input type="text" id="city" name=" city" class="form-control"/>
+
+<div id="cities"></div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script>
+    $(function () {
+
+
+
+        $("#city").keyup(function () {
+            var value = $(this).val();
+            $.ajax({
+                type: "GET",
+                url: "GetCity",
+                data: { 'city': value },
+                dataType: "text",
+                success: function (msg) {
+                    
+                    $("#cities").text(msg)
+                }
+            });
+
+
+
+        });
+
+
+
+    });
+</script>
+
